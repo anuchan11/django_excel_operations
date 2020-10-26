@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/master.css' %}" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <title>Address update</title>
+</head>
+<body>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" role="alert">
+    {% if message.tags %}
+    <p>{{message}}</p>
+    {% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container head">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Please upload excel sheet below:</h2>
+    <input type='file' name='myfile'> <p></p>
+    <button class="'btn btn-md btn-success" type="submit">Upload</button><p></p>
+</form>
+</div>
+</body>
+</html>
